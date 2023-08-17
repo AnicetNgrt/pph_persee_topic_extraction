@@ -41,7 +41,7 @@ def main():
     model_name = 'paraphrase-multilingual-mpnet-base-v2'
     model = SentenceTransformer(model_name)
 
-    st.title("Data Visualization App")
+    st.text("Persee's documents' abstracts' 3D reduced embeddings and topic clustering")
 
     st.sidebar.title("Upload CSV")
     csv_file = st.sidebar.file_uploader("Choose a CSV file", type=["csv"])
@@ -59,7 +59,7 @@ def main():
         print(new_row)
         data = pd.concat([data, new_row], ignore_index=True)
 
-        data['content_formatted'] = data['content'].apply(lambda text: '</br>'.join(textwrap.wrap(text, width=20)))
+        data['content_formatted'] = data['content'].apply(lambda text: '</br>'.join(textwrap.wrap(text, width=40)))
 
         st.sidebar.title("Dimensionality Reduction")
         method = st.sidebar.radio("Choose a method", ("PCA", "t-SNE"))
